@@ -6,6 +6,11 @@ const config: Config = {
     content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
         extend: {
+            fontFamily: {
+                signature: ['var(--font-signature)'],
+                heading: ['var(--font-heading)'],
+                body: ['var(--font-body)'],
+            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
@@ -53,8 +58,33 @@ const config: Config = {
                     '5': 'hsl(var(--chart-5))',
                 },
             },
+            animation: {
+                'fade-in': 'fade-in 0.6s ease-out forwards',
+                glow: 'glow-pulse 3s ease-in-out infinite',
+            },
+            keyframes: {
+                'fade-in': {
+                    from: {
+                        opacity: '0',
+                        transform: 'translateY(10px)',
+                    },
+                    to: {
+                        opacity: '1',
+                        transform: 'translateY(0)',
+                    },
+                },
+                'glow-pulse': {
+                    '0%, 100%': {
+                        opacity: '1',
+                    },
+                    '50%': {
+                        opacity: '0.6',
+                    },
+                },
+            },
         },
     },
     plugins: [tailwindcssAnimate],
 };
+
 export default config;

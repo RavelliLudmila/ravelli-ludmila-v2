@@ -1,21 +1,42 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Great_Vibes, Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-    variable: '--font-geist-sans',
+const greatVibes = Great_Vibes({
+    weight: '400',
+    variable: '--font-signature',
     subsets: ['latin'],
+    display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-    variable: '--font-geist-mono',
+const playfairDisplay = Playfair_Display({
+    variable: '--font-heading',
     subsets: ['latin'],
+    display: 'swap',
+});
+
+const dmSans = DM_Sans({
+    variable: '--font-body',
+    subsets: ['latin'],
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
     title: 'Ravelli Ludmila',
-    description: 'Portfolio de Ludmila Ravelli, desarrolladora frontend argentina especializada en Next.js, React y diseño de interfaces modernas.',
-    keywords: ['Ludmila Ravelli', 'Frontend Developer', 'Next.js', 'React', 'TailwindCSS', 'shadcn/ui', 'Argentina', 'Portfolio'],
+    description:
+        'Desarrollo experiencias digitales donde el código se encuentra con el diseño. Frontend Developer especializada en React, Next.js y UX/UI.',
+    keywords: [
+        'Ludmila Ravelli',
+        'Frontend Developer',
+        'Next.js',
+        'React',
+        'TypeScript',
+        'TailwindCSS',
+        'shadcn/ui',
+        'UX/UI Designer',
+        'Argentina',
+        'Portfolio',
+    ],
     authors: [{ name: 'Ludmila Ravelli', url: 'https://www.ravelliludmila.com.ar' }],
     openGraph: {
         title: 'Ludmila Ravelli | Desarrolladora Frontend',
@@ -35,7 +56,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+            <body className={`${greatVibes.variable} ${playfairDisplay.variable} ${dmSans.variable} font-body antialiased`}>{children}</body>
         </html>
     );
 }
