@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Great_Vibes, Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const greatVibes = Great_Vibes({
     weight: '400',
@@ -56,7 +57,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${greatVibes.variable} ${playfairDisplay.variable} ${dmSans.variable} font-body antialiased`}>{children}</body>
+            <body className={`${greatVibes.variable} ${playfairDisplay.variable} ${dmSans.variable} font-body antialiased`}>
+                <ThemeProvider defaultTheme="system" storageKey="ludmila-theme">
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
