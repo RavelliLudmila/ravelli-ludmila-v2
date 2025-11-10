@@ -11,7 +11,7 @@ const rotatingSubtitles = [
     { text: 'Diseño, interacción y arquitectura visual.', dark: 'hsl(260, 75%, 78%)', light: 'hsl(260, 35%, 40%)' },
 ];
 
-export function HeroSection() {
+const HeroSection = () => {
     const [currentSubtitle, setCurrentSubtitle] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -119,3 +119,5 @@ export function HeroSection() {
         </section>
     );
 }
+
+export default HeroSection
