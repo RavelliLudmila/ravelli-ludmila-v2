@@ -53,7 +53,7 @@ export function HeroSection() {
                     </motion.p>
 
                     <motion.h1
-                        className="text-gradient text-5xl md:text-8xl p-2 font-signature"
+                        className="text-gradient text-8xl p-2"
                         animate={{
                             x: mousePosition.x,
                             y: mousePosition.y,
@@ -75,7 +75,7 @@ export function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.5 }}
-                            className="text-2xl md:text-3xl opacity-80"
+                            className="text-xl md:text-2xl opacity-80"
                             style={
                                 {
                                     color: rotatingSubtitles[currentSubtitle].light,

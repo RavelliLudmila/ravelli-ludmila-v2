@@ -1,0 +1,63 @@
+'use client';
+
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+
+interface NavSection {
+    id: string;
+    label: string;
+}
+
+const sections: NavSection[] = [
+    { id: 'hero', label: 'Inicio' },
+    { id: 'about', label: 'Sobre mí' },
+    { id: 'projects', label: 'Proyectos' },
+    { id: 'skills', label: 'Habilidades' },
+    { id: 'experience', label: 'Experiencia' },
+    { id: 'contact', label: 'Contacto' },
+];
+
+const NavBar = () => {
+    const [activeSection, setActiveSection] = useState('hero');
+    const [hoveredDot, setHoveredDot] = useState<string | null>(null);
+
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({ behavior: 'smooth' });
+        setActiveSection(id);
+    };
+
+    return (
+        <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-8">
+            <ul className="flex flex-col gap-6">
+                {sections.map((section) => (
+                    <li key={section.id} className="relative group">
+                        <button
+                            onClick={() => scrollToSection(section.id)}
+                            onMouseEnter={() => setHoveredDot(section.id)}
+                            onMouseLeave={() => setHoveredDot(null)}
+                            className={cn(
+                                'relative w-3 h-3 rounded-full transition-all duration-300',
+                                activeSection === section.id
+                                    ? 'bg-gradient-to-r from-primary to-secondary'
+                                    : 'bg-muted-foreground/30',
+                                hoveredDot === section.id && 'scale-125'
+                            )}
+                            aria-label={`Ir a ${section.label}`}
+                        />
+                        <span
+                            className={cn(
+                                'absolute left-6 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-medium text-foreground/80 px-3 py-1 rounded-md bg-card/90 backdrop-blur-sm border border-border shadow-lg pointer-events-none transition-all duration-300',
+                                hoveredDot === section.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
+                            )}
+                        >
+                            {section.label}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    );
+};
+
+export default NavBar;
