@@ -6,7 +6,6 @@ type Theme = 'dark' | 'light' | 'system';
 
 type ThemeProviderProps = {
     children: React.ReactNode;
-    defaultTheme?: Theme;
     storageKey?: string;
 };
 
@@ -16,18 +15,20 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-    theme: 'system',
+    theme: 'light',
     setTheme: () => null,
 };
 
 const ThemeProviderContext = React.createContext<ThemeProviderState>(initialState);
 
-export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 'ludmila-theme', ...props }: ThemeProviderProps) {
+export function ThemeProvider({ children, storageKey = 'ludmila-theme', ...props }: ThemeProviderProps) {
     const [theme, setTheme] = React.useState<Theme>(() => {
         if (typeof window !== 'undefined') {
-            return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
+            const savedTheme = localStorage.getItem(storageKey) as Theme;
+            // Si hay un tema guardado, usarlo. Si no, usar 'light' siempre
+            return savedTheme || 'light';
         }
-        return defaultTheme;
+        return 'light';
     });
 
     React.useEffect(() => {

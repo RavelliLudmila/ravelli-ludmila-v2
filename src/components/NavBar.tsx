@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 interface NavSection {
     id: string;
@@ -55,6 +56,7 @@ const NavBar = () => {
                         </span>
                     </li>
                 ))}
+                <ThemeToggle />
             </ul>
         </nav>
     );

@@ -58,7 +58,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${greatVibes.variable} ${inter.variable} ${dmSans.variable} font-body antialiased`}>
-                <ThemeProvider defaultTheme="system" storageKey="ludmila-theme">
+                <ThemeProvider storageKey="ludmila-theme">
                     {children}
                 </ThemeProvider>
             </body>

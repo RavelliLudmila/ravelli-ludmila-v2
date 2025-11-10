@@ -14,7 +14,7 @@
         --popover-foreground: 0 0% 10%;
 
         --primary: 330 77% 84%;
-        --primary-foreground: 0 0% 10%;
+        --primary-foreground: 330 50% 42%;
 
         --secondary: 259 100% 83%;
         --secondary-foreground: 0 0% 10%;
@@ -274,7 +274,14 @@
 
 @layer utilities {
     .text-gradient {
-        background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+        background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-foreground)) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .dark .text-gradient {
+        background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;

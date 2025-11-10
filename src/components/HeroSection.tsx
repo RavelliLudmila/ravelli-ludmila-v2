@@ -2,18 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from './theme-provider';
 
 const rotatingSubtitles = [
     { text: 'Frontend Developer · UX/UI · Interacción.', dark: 'hsl(330, 85%, 75%)', light: 'hsl(330, 45%, 35%)' },
-    { text: 'Diseño interfaces claras y humanas.', dark: 'hsl(260, 75%, 78%)', light: 'hsl(260, 35%, 40%)' },
+    { text: 'Diseño interfaces claras y humanas.', dark: 'hsl(260, 85%, 88%)', light: 'hsl(260, 35%, 40%)' },
     { text: 'Experiencias digitales con intención.', dark: 'hsl(330, 50%, 97%)', light: 'hsl(230, 15%, 25%)' },
     { text: 'Construyendo desde el detalle hacia el todo.', dark: 'hsl(330, 85%, 75%)', light: 'hsl(330, 45%, 35%)' },
-    { text: 'Diseño, interacción y arquitectura visual.', dark: 'hsl(260, 75%, 78%)', light: 'hsl(260, 35%, 40%)' },
+    { text: 'Diseño, interacción y arquitectura visual.', dark: 'hsl(260, 85%, 88%)', light: 'hsl(260, 35%, 40%)' },
 ];
 
 const HeroSection = () => {
     const [currentSubtitle, setCurrentSubtitle] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [mounted, setMounted] = useState(false);
+    const { theme } = useTheme();
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -52,38 +60,58 @@ const HeroSection = () => {
                         Hola, soy
                     </motion.p>
 
-                    <motion.h1
-                        className="text-gradient text-8xl p-2"
-                        animate={{
-                            x: mousePosition.x,
-                            y: mousePosition.y,
-                        }}
-                        transition={{
-                            type: 'spring',
-                            damping: 25,
-                            stiffness: 80,
-                            mass: 0.8,
-                        }}
-                    >
-                        Ludmila ravelli
-                    </motion.h1>
+                    {theme === 'dark' ? (
+                        <motion.h1
+                            className="text-gradient text-8xl p-2"
+                            animate={{
+                                x: mousePosition.x,
+                                y: mousePosition.y,
+                            }}
+                            transition={{
+                                type: 'spring',
+                                damping: 25,
+                                stiffness: 80,
+                                mass: 0.8,
+                            }}
+                        >
+                            Ludmila ravelli
+                        </motion.h1>
+                    ) : (
+                        <motion.h1
+                            className="text-gradient text-8xl p-2"
+                            animate={{
+                                x: mousePosition.x,
+                                y: mousePosition.y,
+                            }}
+                            transition={{
+                                type: 'spring',
+                                damping: 25,
+                                stiffness: 80,
+                                mass: 0.8,
+                            }}
+                        >
+                            Ludmila ravelli
+                        </motion.h1>
+                    )}
 
                     <div className="h-24 flex items-center justify-center">
-                        <motion.div
-                            key={currentSubtitle}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="text-xl md:text-2xl opacity-80"
-                            style={
-                                {
-                                    color: rotatingSubtitles[currentSubtitle].light,
-                                } as React.CSSProperties
-                            }
-                        >
-                            {rotatingSubtitles[currentSubtitle].text}
-                        </motion.div>
+                        {mounted && (
+                            <motion.div
+                                key={currentSubtitle}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="text-xl md:text-2xl opacity-80"
+                                style={
+                                    {
+                                        color: theme === 'dark' ? rotatingSubtitles[currentSubtitle].dark : rotatingSubtitles[currentSubtitle].light,
+                                    } as React.CSSProperties
+                                }
+                            >
+                                {rotatingSubtitles[currentSubtitle].text}
+                            </motion.div>
+                        )}
                     </div>
 
                     <motion.div
@@ -118,6 +146,6 @@ const HeroSection = () => {
             </div>
         </section>
     );
-}
+};
 
-export default HeroSection
+export default HeroSection;
