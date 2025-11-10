@@ -314,4 +314,12 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
+
+    .shadow-soft {
+        box-shadow: 0 2px 12px hsl(var(--secondary) / 0.15);
+    }
+
+    .dark .shadow-soft {
+        box-shadow: 0 2px 16px hsl(var(--secondary) / 0.25);
+    }
 }

@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import { Great_Vibes, Playfair_Display, DM_Sans } from 'next/font/google';
+import { Great_Vibes, DM_Sans, Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 
 const greatVibes = Great_Vibes({
-    weight: '400',
     variable: '--font-signature',
+    weight: '400',
     subsets: ['latin'],
     display: 'swap',
 });
 
-const playfairDisplay = Playfair_Display({
+const inter = DM_Sans({
     variable: '--font-heading',
     subsets: ['latin'],
     display: 'swap',
 });
 
-const dmSans = DM_Sans({
+const dmSans = Inter({
     variable: '--font-body',
     subsets: ['latin'],
     display: 'swap',
@@ -57,7 +57,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${greatVibes.variable} ${playfairDisplay.variable} ${dmSans.variable} font-body antialiased`}>
+            <body className={`${greatVibes.variable} ${inter.variable} ${dmSans.variable} font-body antialiased`}>
                 <ThemeProvider defaultTheme="system" storageKey="ludmila-theme">
                     {children}
                 </ThemeProvider>
