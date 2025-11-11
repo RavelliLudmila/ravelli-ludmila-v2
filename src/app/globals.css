@@ -13,11 +13,11 @@
         --popover: 0 0% 100%;
         --popover-foreground: 0 0% 10%;
 
-        --primary: 330 77% 84%;
-        --primary-foreground: 330 50% 42%;
+        --primary: 330 55% 62%;
+        --primary-foreground: 330 40% 96%;
 
-        --secondary: 259 100% 83%;
-        --secondary-foreground: 260 35% 40%;
+        --secondary: 300 38% 55%;
+        --secondary-foreground: 259 100% 83%;
 
         --muted: 0 0% 93%;
         --muted-foreground: 0 0% 45%;
@@ -51,7 +51,7 @@
         --popover: 260 30% 10%;
         --popover-foreground: 330 50% 97%;
 
-        --primary: 330 85% 75%;
+        --primary: 315 80% 75%;
         --primary-foreground: 260 30% 10%;
 
         --secondary: 260 75% 78%;
@@ -181,12 +181,12 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background: hsl(var(--primary));
+        background: hsl(var(--primary) / 0.7);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: hsl(var(--accent));
+        background: hsl(var(--primary));
     }
 
     ::selection {
@@ -274,24 +274,20 @@
 
 @layer utilities {
     .text-gradient {
-        background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-foreground)) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .dark .text-gradient {
         background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
-    .gradient-bg {
-        background: linear-gradient(180deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--secondary) / 0.08) 100%);
+    .text-gradient-secondary {
+        background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
-    .dark .gradient-bg {
+    .gradient-bg {
         background: linear-gradient(180deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--secondary) / 0.05) 100%);
     }
 
@@ -323,10 +319,6 @@
     }
 
     .shadow-soft {
-        box-shadow: 0 2px 12px hsl(var(--secondary) / 0.15);
-    }
-
-    .dark .shadow-soft {
         box-shadow: 0 2px 16px hsl(var(--secondary) / 0.25);
     }
 }

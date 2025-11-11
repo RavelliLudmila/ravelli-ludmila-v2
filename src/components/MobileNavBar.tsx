@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, Code2, Mail, Briefcase, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 interface NavItem {
     id: string;
@@ -33,7 +34,6 @@ const MobileNavBar = () => {
 
     return (
         <>
-            {/* Toggle Button */}
             <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -57,7 +57,6 @@ const MobileNavBar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -67,7 +66,6 @@ const MobileNavBar = () => {
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Navigation Panel */}
                         <motion.nav
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
@@ -83,7 +81,6 @@ const MobileNavBar = () => {
                                 'p-8 flex flex-col'
                             )}
                         >
-                            {/* Navigation Items */}
                             <div className="flex flex-col gap-3 mt-20">
                                 {navItems.map((item, index) => (
                                     <motion.button
@@ -110,9 +107,9 @@ const MobileNavBar = () => {
                                         </span>
                                     </motion.button>
                                 ))}
+                                <ThemeToggle animationIndex={navItems.length} />
                             </div>
 
-                            {/* Footer Decoration */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
