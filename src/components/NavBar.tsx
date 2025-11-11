@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
 
@@ -22,10 +22,28 @@ const NavBar = () => {
     const [activeSection, setActiveSection] = useState('hero');
     const [hoveredDot, setHoveredDot] = useState<string | null>(null);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        sections.forEach(({ id }) => {
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        element?.scrollIntoView({ behavior: 'smooth' });
-        setActiveSection(id);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -39,9 +57,7 @@ const NavBar = () => {
                             onMouseLeave={() => setHoveredDot(null)}
                             className={cn(
                                 'relative w-3 h-3 rounded-full transition-all duration-300',
-                                activeSection === section.id
-                                    ? 'bg-gradient-to-r from-primary to-secondary'
-                                    : 'bg-muted-foreground/30',
+                                activeSection === section.id ? 'bg-gradient-to-r from-primary to-secondary' : 'bg-muted-foreground/30',
                                 hoveredDot === section.id && 'scale-125'
                             )}
                             aria-label={`Ir a ${section.label}`}
