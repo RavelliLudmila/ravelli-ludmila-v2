@@ -1,3 +1,4 @@
+import AboutSection from '@/components/AboutSection';
 import CursorGlow from '@/components/CursorGlow';
 import HeroSection from '@/components/HeroSection';
 import MobileNavBar from '@/components/MobileNavBar';
@@ -10,6 +11,7 @@ export default function Home() {
             <CursorGlow />
             <MobileNavBar />
             <HeroSection />
+            <AboutSection />
         </main>
     );
 }
