@@ -3,6 +3,7 @@ import CursorGlow from '@/components/CursorGlow';
 import HeroSection from '@/components/HeroSection';
 import MobileNavBar from '@/components/MobileNavBar';
 import NavBar from '@/components/NavBar';
+import ProjectsSection from '@/components/ProjectsSection';
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <MobileNavBar />
             <HeroSection />
             <AboutSection />
+            <ProjectsSection />
         </main>
     );
 }

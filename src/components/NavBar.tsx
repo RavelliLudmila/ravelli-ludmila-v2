@@ -6,13 +6,14 @@ import ThemeToggle from './ThemeToggle';
 
 interface NavSection {
     id: string;
+    scrollTarget?: string;
     label: string;
 }
 
 const sections: NavSection[] = [
     { id: 'hero', label: 'Inicio' },
     { id: 'about', label: 'Sobre mí' },
-    { id: 'projects', label: 'Proyectos' },
+    { id: 'projects', scrollTarget: 'projects-scroll', label: 'Proyectos' },
     { id: 'skills', label: 'Habilidades' },
     { id: 'experience', label: 'Experiencia' },
     { id: 'contact', label: 'Contacto' },
@@ -23,27 +24,34 @@ const NavBar = () => {
     const [hoveredDot, setHoveredDot] = useState<string | null>(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                const element = document.getElementById(section.id);
+
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    const elementTop = rect.top + window.scrollY;
+
+                    if (scrollPosition >= elementTop) {
+                        setActiveSection(section.id);
+                        break;
                     }
-                });
-            },
-            { threshold: 0.5 }
-        );
+                }
+            }
+        };
 
-        sections.forEach(({ id }) => {
-            const element = document.getElementById(id);
-            if (element) observer.observe(element);
-        });
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
-        return () => observer.disconnect();
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (id: string) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const scrollToSection = (section: NavSection) => {
+        const targetId = section.scrollTarget || section.id;
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -52,12 +60,14 @@ const NavBar = () => {
                 {sections.map((section) => (
                     <li key={section.id} className="relative group">
                         <button
-                            onClick={() => scrollToSection(section.id)}
+                            onClick={() => scrollToSection(section)}
                             onMouseEnter={() => setHoveredDot(section.id)}
                             onMouseLeave={() => setHoveredDot(null)}
                             className={cn(
                                 'relative w-3 h-3 rounded-full transition-all duration-300',
-                                activeSection === section.id ? 'bg-gradient-to-r from-primary to-secondary' : 'bg-muted-foreground/30',
+                                activeSection === section.scrollTarget || activeSection === section.id
+                                    ? 'bg-gradient-to-r from-primary to-secondary'
+                                    : 'bg-muted-foreground/30',
                                 hoveredDot === section.id && 'scale-125'
                             )}
                             aria-label={`Ir a ${section.label}`}
