@@ -3,6 +3,7 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CSSPropertiesWithVars extends React.CSSProperties {
     '--count'?: number;
@@ -33,7 +34,7 @@ const projects: Project[] = [
             'Marketplace sustentable para conectar usuarios que desean descartar materiales con emprendedores que los reutilizan. Desarrollé el frontend completo con enfoque en accesibilidad y experiencia de usuario, colaborando directamente con backend y data.',
         tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Figma', 'Google Maps'],
         gradient: 'from-purple-400 to-indigo-400',
-        image: '/EcoRed.png',
+        image: '/EcoRed.webp',
         customRotate: '3deg',
     },
     {
@@ -43,8 +44,8 @@ const projects: Project[] = [
             'Plataforma para conectar pacientes con profesionales de salud mental mediante un algoritmo de matching inteligente. Lideré la implementación frontend, diseñé dashboards para distintos tipos de usuario e integré Google OAuth, MercadoPago y Mapbox.',
         tags: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Formik', 'PostgreSQL'],
         gradient: 'from-pink-400 to-purple-400',
-        image: '/PsyMatch.png',
-        link: 'https://psy-match-frontend.vercel.app/',
+        image: '/PsyMatch.webp',
+        link: 'https://psy-match-frontend.vercel.app',
         github: 'https://github.com/PsyMatch/PsyMatch-Frontend',
         customRotate: '-1deg',
     },
@@ -55,10 +56,22 @@ const projects: Project[] = [
             'E-commerce diseñado para ofrecer una experiencia de compra moderna y elegante. Implementé el App Router de Next.js, diseñé la interfaz con modo oscuro/claro y desarrollé funcionalidades de carrito, favoritos y dashboard de usuario.',
         tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Context API', 'Responsive'],
         gradient: 'from-indigo-400 to-blue-400',
-        image: '/Aura.png',
+        image: '/Aura.webp',
         link: 'https://www.aurafitarg.com.ar',
         github: 'https://github.com/RavelliLudmila/aura-ecommerce',
         customRotate: '2deg',
+    },
+    {
+        id: 3,
+        title: 'Portfolio Interactivo',
+        description:
+            'Portfolio profesional con diseño inspirado en WhatsApp que ofrece una experiencia única de navegación. Implementé un sistema de chat interactivo con animaciones fluidas, formulario de contacto integrado con EmailJS y diseño completamente responsive.',
+        tags: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
+        gradient: 'from-pink-300 to-purple-300',
+        image: '/Portfolio.webp',
+        link: 'https://v1.ravelliludmila.com.ar',
+        github: 'https://github.com/RavelliLudmila/ravelli-ludmila',
+        customRotate: '-2deg',
     },
 ];
 
@@ -71,7 +84,7 @@ const ProjectsSection = () => {
             className="selected-work gradient-bg"
             style={
                 {
-                    '--count': 8,
+                    '--count': 7,
                     timelineScope: timelineScopes,
                 } as CSSPropertiesWithVars
             }
@@ -84,7 +97,7 @@ const ProjectsSection = () => {
                 <p className="text-center opacity-70 max-w-2xl mx-auto">Proyectos reales que combinan tecnología, diseño y propósito</p>
             </div>
 
-            {/* Scroll trigger divs - invisibles pero necesarios para las animaciones */}
+            {/* Scroll trigger divs */}
             <div className="card-scroll-triggers">
                 {projects.map((_, i) => (
                     <div key={i} className="scroll-trigger" style={{ viewTimeline: `--trigger-${i}` } as CSSPropertiesWithVars} aria-hidden="true" />
@@ -131,16 +144,26 @@ const ProjectsSection = () => {
 
                             <div className="flex gap-4">
                                 {project.link && (
-                                    <button className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity">
+                                    <Link
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
+                                    >
                                         <ExternalLink size={16} />
                                         Ver proyecto
-                                    </button>
+                                    </Link>
                                 )}
                                 {project.github && (
-                                    <button className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity">
+                                    <Link
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity"
+                                    >
                                         <Github size={16} />
                                         Código
-                                    </button>
+                                    </Link>
                                 )}
                             </div>
                         </div>
