@@ -89,7 +89,7 @@ const ProjectsSection = () => {
                 } as CSSPropertiesWithVars
             }
         >
-            <div id="projects-scroll" style={{ position: 'absolute', top: '80vh' }} />
+            <div id="projects-scroll" style={{ position: 'absolute', top: '46vh' }} />
             <div className="scroll-heading-fixed px-6 md:px-16">
                 <h2 className="mb-8 text-center">
                     <span className="text-gradient">Proyectos</span>
