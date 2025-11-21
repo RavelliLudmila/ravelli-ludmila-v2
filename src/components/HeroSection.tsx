@@ -38,6 +38,33 @@ const HeroSection = () => {
         setMousePosition({ x: x * 0.03, y: y * 0.03 });
     };
 
+    const [visibleLetters, setVisibleLetters] = useState(0);
+    const fullName = 'Ludmila Ravelli';
+    const baseInitials = 'Lud';
+
+    useEffect(() => {
+        const remainingLength = fullName.length - baseInitials.length;
+        if (remainingLength <= 0) return;
+
+        const startTimeout = setTimeout(() => {
+            const interval = setInterval(() => {
+                setVisibleLetters((prev) => {
+                    if (prev >= remainingLength) {
+                        clearInterval(interval);
+                        return prev;
+                    }
+                    return prev + 1;
+                });
+            }, 120);
+
+            return () => clearInterval(interval);
+        }, 600);
+
+        return () => clearTimeout(startTimeout);
+    }, []);
+
+    const typedName = `${baseInitials}${fullName.slice(baseInitials.length, baseInitials.length + visibleLetters)}`;
+
     return (
         <section
             id="hero"
@@ -60,39 +87,21 @@ const HeroSection = () => {
                         Hola, soy
                     </motion.p>
 
-                    {theme === 'dark' ? (
-                        <motion.h1
-                            className="text-gradient text-8xl p-2"
-                            animate={{
-                                x: mousePosition.x,
-                                y: mousePosition.y,
-                            }}
-                            transition={{
-                                type: 'spring',
-                                damping: 25,
-                                stiffness: 80,
-                                mass: 0.8,
-                            }}
-                        >
-                            Ludmila ravelli
-                        </motion.h1>
-                    ) : (
-                        <motion.h1
-                            className="text-gradient text-8xl p-2"
-                            animate={{
-                                x: mousePosition.x,
-                                y: mousePosition.y,
-                            }}
-                            transition={{
-                                type: 'spring',
-                                damping: 25,
-                                stiffness: 80,
-                                mass: 0.8,
-                            }}
-                        >
-                            Ludmila ravelli
-                        </motion.h1>
-                    )}
+                    <motion.h1
+                        className="text-gradient text-8xl p-2"
+                        animate={{
+                            x: mousePosition.x,
+                            y: mousePosition.y,
+                        }}
+                        transition={{
+                            type: 'spring',
+                            damping: 25,
+                            stiffness: 80,
+                            mass: 0.8,
+                        }}
+                    >
+                        {typedName}
+                    </motion.h1>
 
                     <div className="h-24 flex items-center justify-center">
                         {mounted && (

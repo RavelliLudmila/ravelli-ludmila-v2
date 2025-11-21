@@ -26,8 +26,8 @@ const CursorGlow = () => {
 
     const primaryGradient =
         theme === 'dark'
-            ? 'radial-gradient(circle, hsla(330, 85%, 75%, 0.35) 0%, hsla(260, 75%, 78%, 0.25) 35%, hsla(260, 75%, 78%, 0.15) 60%, transparent 80%)'
-            : 'radial-gradient(circle, hsla(330, 77%, 84%, 0.25) 0%, hsla(259, 100%, 83%, 0.18) 35%, hsla(259, 100%, 83%, 0.08) 60%, transparent 80%)';
+            ? 'radial-gradient(circle, hsla(330, 85%, 75%, 0.35) 20%, hsla(260, 75%, 78%, 0.25) 75%, hsla(260, 75%, 78%, 0.15) 90%, transparent 100%)'
+            : 'radial-gradient(circle, hsla(330, 85%, 75%, 0.35) 10%, hsla(259, 100%, 83%, 0.18) 75%, hsla(259, 100%, 83%, 0.08) 90%, transparent 100%)';
 
     const secondaryGradient =
         theme === 'dark'
@@ -39,8 +39,8 @@ const CursorGlow = () => {
             <motion.div
                 className="pointer-events-none fixed z-0 hidden lg:block"
                 animate={{
-                    x: mousePosition.x - 250,
-                    y: mousePosition.y - 250,
+                    x: mousePosition.x - 150,
+                    y: mousePosition.y - 150,
                 }}
                 transition={{
                     type: 'spring',
@@ -48,18 +48,21 @@ const CursorGlow = () => {
                     stiffness: 150,
                 }}
                 style={{
-                    width: theme === 'dark' ? '300px' : '500px',
-                    height: theme === 'dark' ? '300px' : '500px',
+                    width: theme === 'dark' ? '300px' : '400px',
+                    height: theme === 'dark' ? '300px' : '400px',
                     background: primaryGradient,
                     filter: theme === 'dark' ? 'blur(150px)' : 'blur(50px)',
+                    left: 0,
+                    top: 0,
+                    transform: 'translate(-50%, -50%)',
                 }}
             />
 
             <motion.div
                 className="pointer-events-none fixed -z-10 hidden lg:block"
                 animate={{
-                    x: mousePosition.x - 300,
-                    y: mousePosition.y - 300,
+                    x: mousePosition.x - 150,
+                    y: mousePosition.y - 150,
                 }}
                 transition={{
                     type: 'spring',
@@ -67,10 +70,13 @@ const CursorGlow = () => {
                     stiffness: 120,
                 }}
                 style={{
-                    width: theme === 'dark' ? '500px' : '600px',
-                    height: theme === 'dark' ? '500px' : '600px',
+                    width: theme === 'dark' ? '450px' : '550px',
+                    height: theme === 'dark' ? '450px' : '550px',
                     background: secondaryGradient,
                     filter: theme === 'dark' ? 'blur(150px)' : 'blur(60px)',
+                    left: 0,
+                    top: 0,
+                    transform: 'translate(-50%, -50%)',
                 }}
             />
         </>
