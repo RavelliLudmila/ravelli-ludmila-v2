@@ -7,7 +7,7 @@ const SkillsSection = () => {
     const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
     return (
-        <section id="skills" className="min-h-screen py-20 px-6 md:px-14 flex items-center bg-inherit">
+        <section id="skills" className="min-h-screen py-20 px-6 md:px-14 flex items-center bg-background">
             <div className="w-full">
                 <h2 className="mb-8 text-center">
                     <span className="text-gradient-secondary">Stack técnico</span>

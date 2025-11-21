@@ -7,7 +7,7 @@
         --background: 240 20% 98%;
         --foreground: 0 0% 10%;
 
-        --card: 0 0% 100%;
+        --card: 260 30% 96%;
         --card-foreground: 0 0% 10%;
 
         --popover: 0 0% 100%;
@@ -45,7 +45,7 @@
         --background: 260 35% 7%;
         --foreground: 330 50% 97%;
 
-        --card: 260 30% 6%;
+        --card: 260 30% 10%;
         --card-foreground: 330 50% 97%;
 
         --popover: 260 30% 10%;
@@ -292,7 +292,11 @@
     }
 
     .gradient-bg {
-        background: linear-gradient(180deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--secondary) / 0.05) 100%);
+        background: linear-gradient(180deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--secondary) / 0.2) 100%);
+    }
+
+    .gradient-bg-secondary {
+        background: radial-gradient(circle at center, hsl(var(--secondary) / 0.2) 0%, hsl(var(--primary) / 0.05) 100%);
     }
 
     .glass-effect {

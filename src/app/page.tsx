@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import MobileNavBar from '@/components/MobileNavBar';
 import NavBar from '@/components/NavBar';
 import SkillsSection from '@/components/SkillsSection';
+import ExperienceSection from '@/components/ExperienceSection';
 
 const AboutSection = dynamic(() => import('@/components/AboutSection'));
 const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'));
@@ -18,6 +19,7 @@ export default function Home() {
             <AboutSection />
             <ProjectsSection />
             <SkillsSection />
+            <ExperienceSection />
         </main>
     );
 }
