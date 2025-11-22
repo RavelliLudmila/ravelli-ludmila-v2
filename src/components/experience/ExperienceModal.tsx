@@ -26,7 +26,7 @@ export function ExperienceModal({ isOpen, onClose, experience }: ExperienceModal
     if (!isOpen || !experience) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4 bg-white/80 dark:bg-black/80">
             <Card className="w-full max-w-2xl relative">
                 <button
                     onClick={onClose}

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, Code2, Mail, Briefcase, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
+import { useContact } from '@/context/ContactContext';
 
 interface NavItem {
     id: string;
@@ -24,7 +25,15 @@ const navItems: NavItem[] = [
 const MobileNavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const { open } = useContact();
+
     const scrollToSection = (id: string) => {
+        if (id === 'contact') {
+            open();
+            setIsOpen(false);
+            return;
+        }
+        
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
