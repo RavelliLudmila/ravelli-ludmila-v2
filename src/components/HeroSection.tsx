@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from './theme-provider';
+import { useContact } from '@/context/ContactContext';
 
 const rotatingSubtitles = [
     { text: 'Frontend Developer · UX/UI · Interacción.', dark: 'hsl(330, 85%, 75%)', light: 'hsl(330, 45%, 35%)' },
@@ -17,6 +18,7 @@ const HeroSection = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [mounted, setMounted] = useState(false);
     const { theme } = useTheme();
+    const { open } = useContact();
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -139,7 +141,7 @@ const HeroSection = () => {
                         className="flex gap-4 justify-center pt-8"
                     >
                         <button
-                            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={open}
                             className="px-8 py-3 rounded-full glass-effect border border-border hover:border-primary transition-all duration-300 hover:shadow-soft"
                         >
                             Contactar

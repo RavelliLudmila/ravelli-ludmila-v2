@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
+import { useContact } from '@/context/ContactContext';
 
 interface NavSection {
     id: string;
@@ -22,6 +23,7 @@ const sections: NavSection[] = [
 const NavBar = () => {
     const [activeSection, setActiveSection] = useState('hero');
     const [hoveredDot, setHoveredDot] = useState<string | null>(null);
+    const { open } = useContact();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,6 +52,11 @@ const NavBar = () => {
     }, []);
 
     const scrollToSection = (section: NavSection) => {
+        if (section.id === 'contact') {
+            open();
+            return;
+        }
+
         const targetId = section.scrollTarget || section.id;
         document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
     };

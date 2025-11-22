@@ -5,21 +5,24 @@ import MobileNavBar from '@/components/MobileNavBar';
 import NavBar from '@/components/NavBar';
 import SkillsSection from '@/components/SkillsSection';
 import ExperienceSection from '@/components/ExperienceSection';
+import { ContactProvider } from '@/context/ContactContext';
 
 const AboutSection = dynamic(() => import('@/components/AboutSection'));
 const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'));
 
 export default function Home() {
     return (
-        <main>
-            <NavBar />
-            <CursorGlow />
-            <MobileNavBar />
-            <HeroSection />
-            <AboutSection />
-            <ProjectsSection />
-            <SkillsSection />
-            <ExperienceSection />
-        </main>
+        <ContactProvider>
+            <main>
+                <NavBar />
+                <CursorGlow />
+                <MobileNavBar />
+                <HeroSection />
+                <AboutSection />
+                <ProjectsSection />
+                <SkillsSection />
+                <ExperienceSection />
+            </main>
+        </ContactProvider>
     );
 }
