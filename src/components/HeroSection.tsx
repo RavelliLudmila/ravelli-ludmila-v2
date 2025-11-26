@@ -148,7 +148,7 @@ const HeroSection = () => {
                         </button>
                         <button
                             onClick={() => document.getElementById('projects-scroll')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-opacity duration-300"
+                            className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:brightness-125 dark:hover:brightness-110 transition-all duration-500"
                         >
                             Ver proyectos
                         </button>
