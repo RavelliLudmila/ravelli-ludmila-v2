@@ -10,20 +10,20 @@ type ExperienceEntry = {
     title: string;
     institution: string;
     description: string;
-    position: number;
-    vertical: 'top' | 'bottom';
+    position?: number;
+    vertical?: 'top' | 'bottom';
     offset?: number;
     width?: string;
     anchor?: 'left' | 'center' | 'right';
     highlight?: boolean;
-    stack?: string[];
+    stack: string[];
 };
 
 type TimelinePoint = {
     id: string;
     label: string;
     position: number;
-    icon?: React.ReactNode;
+    icon: React.ReactNode;
     connector: {
         direction: 'top' | 'bottom';
         height: number;
@@ -192,18 +192,16 @@ const ExperienceTimelineMd = () => {
                             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-b from-primary to-secondary text-background shadow-soft">
                                 {point.icon}
                             </div>
-                            {point.connector && (
-                                <span
-                                    className={cn(
-                                        'absolute left-1/2 w-px bg-foreground/30',
-                                        point.connector.direction === 'top' ? 'bottom-full' : 'top-full'
-                                    )}
-                                    style={{
-                                        height: point.connector.height,
-                                        transform: 'translateX(-50%)',
-                                    }}
-                                />
-                            )}
+                            <span
+                                className={cn(
+                                    'absolute left-1/2 w-px bg-foreground/30',
+                                    point.connector.direction === 'top' ? 'bottom-full' : 'top-full'
+                                )}
+                                style={{
+                                    height: point.connector.height,
+                                    transform: 'translateX(-50%)',
+                                }}
+                            />
                             {point.connector2 && (
                                 <span
                                     className={cn(
@@ -250,7 +248,7 @@ const ExperienceTimelineMd = () => {
                     );
                 })}
             </div>
-            <ExperienceModal isOpen={isModalOpen} onClose={handleCloseModal} experience={selectedExperience} />
+            {selectedExperience && <ExperienceModal isOpen={isModalOpen} onClose={handleCloseModal} experience={selectedExperience} />}
         </div>
     );
 };
