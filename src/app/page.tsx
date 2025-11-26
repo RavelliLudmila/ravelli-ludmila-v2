@@ -5,6 +5,7 @@ import MobileNavBar from '@/components/MobileNavBar';
 import NavBar from '@/components/NavBar';
 import SkillsSection from '@/components/SkillsSection';
 import ExperienceSection from '@/components/ExperienceSection';
+import Footer from '@/components/Footer';
 import { ContactProvider } from '@/context/ContactContext';
 
 const AboutSection = dynamic(() => import('@/components/AboutSection'));
@@ -22,6 +23,7 @@ export default function Home() {
                 <ExperienceSection />
                 <SkillsSection />
                 <ProjectsSection />
+                <Footer />
             </main>
         </ContactProvider>
     );

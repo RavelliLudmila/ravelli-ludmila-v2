@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Send, X, Mail, Linkedin, Github, FileText, ExternalLink } from 'lucide-react';
+import { Send, X, Mail, Linkedin, Github, FileText, ExternalLink, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from './ui/input';
@@ -17,8 +17,23 @@ interface ChatMessage {
     action?: string;
 }
 
+interface ContactItemProps {
+    id: string;
+    icon: React.ReactNode;
+    label: string;
+    value: string;
+    action?: string;
+    className?: string;
+}
+
 const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
-    const contactItems = [
+    const contactItems: ContactItemProps[] = [
+        {
+            id: 'location',
+            icon: <MapPin className="w-4 h-4" opacity={0.5} />,
+            label: 'Ubicación',
+            value: 'Santa Fe Capital, Argentina',
+        },
         {
             id: 'email',
             icon: <Mail className="w-4 h-4" opacity={0.5} />,
@@ -63,7 +78,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
                     {item.icon}
                     <span className="flex items-center justify-between w-full">
                         {item.label}: {item.value}
-                        <ExternalLink className="w-3 h-3" opacity={0.5} />
+                        {item.action && <ExternalLink className="w-3 h-3" opacity={0.5} />}
                     </span>
                 </div>
             ),
@@ -106,9 +121,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-end justify-end pr-4 pb-4 pointer-events-none">
+        <div className="fixed inset-0 z-50 flex items-end justify-center mx-4 md:justify-end md:pr-4 pb-10 pointer-events-none">
             <Card
-                className="pointer-events-auto w-full max-w-md h-[460px] gap-0 py-4"
+                className="pointer-events-auto w-full max-w-md min-h-[500px] gap-0 py-4"
                 style={{
                     boxShadow: '0 0 40px hsl(var(--primary) / 0.15), 0 20px 60px hsl(var(--muted) / 0.3)',
                 }}
@@ -131,7 +146,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
                 <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
                     {messages.map((msg, index) => (
                         <div key={index} className="flex justify-start">
-                            <div className="space-y-2 max-w-[80%] w-full">
+                            <div className="space-y-2 max-w-[90%] sm:max-w-[80%] w-full">
                                 <div
                                     className={`px-4 py-2 rounded-2xl text-sm whitespace-pre-line ${
                                         msg.action
@@ -146,7 +161,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
                             </div>
                         </div>
                     ))}
-                    <div ref={messagesEndRef} />
                 </div>
 
                 <div className="px-4 pt-3 border-t border-border flex items-center gap-2">
