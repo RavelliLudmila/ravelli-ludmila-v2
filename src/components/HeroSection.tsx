@@ -60,7 +60,7 @@ const HeroSection = () => {
             }, 120);
 
             return () => clearInterval(interval);
-        }, 600);
+        }, 1000);
 
         return () => clearTimeout(startTimeout);
     }, []);
