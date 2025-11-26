@@ -1,6 +1,6 @@
 const AboutSection = () => {
     return (
-        <section id="about" className="section-height px-6 md:px-16 flex items-center justify-center overflow-hidden bg-background">
+        <section id="about" className="min-h-screen py-14 px-6 md:px-16 flex items-center justify-center overflow-hidden bg-background">
             <div className="max-w-4xl mx-auto w-full">
                 <h2 className="mb-8 text-center">
                     <span className="text-gradient-secondary">Sobre mí</span>
