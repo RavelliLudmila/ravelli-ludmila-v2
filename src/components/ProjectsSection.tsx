@@ -45,7 +45,7 @@ const projects: Project[] = [
         tags: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Formik', 'PostgreSQL'],
         gradient: 'from-pink-400 to-purple-400',
         image: '/PsyMatch.webp',
-        link: 'https://psy-match-frontend.vercel.app',
+        link: 'https://psymatch-frontend-app.onrender.com',
         github: 'https://github.com/PsyMatch/PsyMatch-Frontend',
         customRotate: '-1deg',
     },
@@ -89,7 +89,7 @@ const ProjectsSection = () => {
                 } as CSSPropertiesWithVars
             }
         >
-            <div id="projects-scroll" style={{ position: 'absolute', top: '46vh' }} />
+            <div id="projects-scroll" style={{ position: 'absolute', top: '55vh' }} />
             <div className="scroll-heading-fixed px-6 md:px-16">
                 <h2 className="mb-8 text-center">
                     <span className="text-gradient">Proyectos</span>

@@ -19,9 +19,9 @@ export default function Home() {
                 <MobileNavBar />
                 <HeroSection />
                 <AboutSection />
-                <ProjectsSection />
                 <SkillsSection />
                 <ExperienceSection />
+                <ProjectsSection />
             </main>
         </ContactProvider>
     );

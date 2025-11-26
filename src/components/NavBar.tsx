@@ -14,9 +14,9 @@ interface NavSection {
 const sections: NavSection[] = [
     { id: 'hero', label: 'Inicio' },
     { id: 'about', label: 'Sobre mí' },
-    { id: 'projects', scrollTarget: 'projects-scroll', label: 'Proyectos' },
     { id: 'skills', label: 'Habilidades' },
     { id: 'experience', label: 'Experiencia' },
+    { id: 'projects', scrollTarget: 'projects-scroll', label: 'Proyectos' },
     { id: 'contact', label: 'Contacto' },
 ];
 

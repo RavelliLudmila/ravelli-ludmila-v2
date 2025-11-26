@@ -11,14 +11,15 @@ interface NavItem {
     id: string;
     label: string;
     icon: React.ReactNode;
+    scrollTarget?: string;
 }
 
 const navItems: NavItem[] = [
     { id: 'hero', label: 'Inicio', icon: <Home size={20} /> },
     { id: 'about', label: 'Sobre mí', icon: <User size={20} /> },
-    { id: 'projects', label: 'Proyectos', icon: <Code2 size={20} /> },
     { id: 'skills', label: 'Habilidades', icon: <Sparkles size={20} /> },
     { id: 'experience', label: 'Experiencia', icon: <Briefcase size={20} /> },
+    { id: 'projects', scrollTarget: 'projects-scroll', label: 'Proyectos', icon: <Code2 size={20} /> },
     { id: 'contact', label: 'Contacto', icon: <Mail size={20} /> },
 ];
 
@@ -100,7 +101,7 @@ const MobileNavBar = () => {
                                             delay: index * 0.08,
                                             duration: 0.3,
                                         }}
-                                        onClick={() => scrollToSection(item.id)}
+                                        onClick={() => scrollToSection(item.scrollTarget || item.id)}
                                         className={cn(
                                             'flex items-center gap-4 p-4 rounded-lg',
                                             'hover:bg-primary/10 active:bg-primary/20',
