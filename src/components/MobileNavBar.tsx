@@ -17,8 +17,8 @@ interface NavItem {
 const navItems: NavItem[] = [
     { id: 'hero', label: 'Inicio', icon: <Home size={20} /> },
     { id: 'about', label: 'Sobre mí', icon: <User size={20} /> },
-    { id: 'skills', label: 'Habilidades', icon: <Sparkles size={20} /> },
     { id: 'experience', label: 'Experiencia', icon: <Briefcase size={20} /> },
+    { id: 'skills', label: 'Habilidades', icon: <Sparkles size={20} /> },
     { id: 'projects', scrollTarget: 'projects-scroll', label: 'Proyectos', icon: <Code2 size={20} /> },
     { id: 'contact', label: 'Contacto', icon: <Mail size={20} /> },
 ];

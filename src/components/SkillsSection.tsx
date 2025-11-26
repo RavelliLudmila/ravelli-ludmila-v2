@@ -12,15 +12,13 @@ const SkillsSection = () => {
                 <h2 className="mb-8 text-center">
                     <span className="text-gradient-secondary">Stack técnico</span>
                 </h2>
-                <p className="text-center mb-8 opacity-70 max-w-2xl mx-auto">
-                    Tecnologías y herramientas que domino para crear experiencias web
-                </p>
+                <p className="text-center mb-8 opacity-70 max-w-2xl mx-auto">Tecnologías y herramientas que domino para crear experiencias web</p>
                 <div className="relative overflow-hidden py-8">
                     <div className="flex animate-infinite-scroll-fast sm:animate-infinite-scroll-slow hover:[animation-play-state:paused]">
                         {[...technicalSkills, ...technicalSkills].map((skill, i) => (
                             <div
                                 key={`${skill.name}-${i}`}
-                                className="group relative min-w-[110px] sm:min-w-[125px] cursor-pointer"
+                                className="group relative min-w-[110px] sm:min-w-[125px]"
                                 onMouseEnter={() => setHoveredSkill(skill.name)}
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 style={{
@@ -44,8 +42,8 @@ const SkillsSection = () => {
                 </div>
                 <div className="mt-6 max-w-md mx-auto animate-fade-in">
                     <div className="p-4">
-                        <p className="text-muted-foreground text-center">
-                            {hoveredSkill && technicalSkills.find((skill: Skill) => skill.name === hoveredSkill)?.description}
+                        <p className={`text-muted-foreground text-center ${hoveredSkill ? 'opacity-100' : 'opacity-0'}`}>
+                            {hoveredSkill ? technicalSkills.find((skill: Skill) => skill.name === hoveredSkill)?.description : 'Stack description'}
                         </p>
                     </div>
                 </div>
