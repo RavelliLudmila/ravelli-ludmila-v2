@@ -40,7 +40,7 @@ const SkillsSection = () => {
                         ))}
                     </div>
                 </div>
-                <div className="mt-6 max-w-md mx-auto animate-fade-in">
+                <div className="mt-6 mx-auto animate-fade-in">
                     <div className="p-4">
                         <p className={`text-muted-foreground text-center ${hoveredSkill ? 'opacity-100' : 'opacity-0'}`}>
                             {hoveredSkill ? technicalSkills.find((skill: Skill) => skill.name === hoveredSkill)?.description : 'Stack description'}
