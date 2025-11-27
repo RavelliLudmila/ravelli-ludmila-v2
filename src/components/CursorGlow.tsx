@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { useTheme } from './theme-provider';
 
 const CursorGlow = () => {
@@ -24,59 +23,45 @@ const CursorGlow = () => {
         return null;
     }
 
-    const primaryGradient =
-        theme === 'dark'
-            ? 'radial-gradient(circle, hsla(330, 85%, 75%, 0.35) 20%, hsla(260, 75%, 78%, 0.25) 75%, hsla(260, 75%, 78%, 0.15) 90%, transparent 100%)'
-            : 'radial-gradient(circle, hsla(330, 85%, 75%, 0.35) 10%, hsla(259, 100%, 83%, 0.18) 75%, hsla(259, 100%, 83%, 0.08) 90%, transparent 100%)';
+    const primaryGradient = 'radial-gradient(circle, hsla(330, 85%, 75%, 0.25) 50%, hsla(260, 75%, 78%, 0.15) 75%, hsla(260, 75%, 78%, 0.05) 90%, transparent 100%)' ;
 
-    const secondaryGradient =
-        theme === 'dark'
-            ? 'radial-gradient(circle, hsla(330, 85%, 75%, 0.18) 0%, hsla(260, 75%, 78%, 0.12) 50%, transparent 75%)'
-            : 'radial-gradient(circle, hsla(330, 77%, 84%, 0.12) 0%, hsla(259, 100%, 83%, 0.08) 50%, transparent 75%)';
+    const secondaryGradient = 'radial-gradient(circle, hsla(330, 85%, 75%, 0.1) 50%, hsla(260, 75%, 78%, 0.05) 50%, transparent 75%)' ;
+
+    const xPositionPrimary = theme === 'dark' ? mousePosition.x - 75 : mousePosition.x - 200;
+    const yPositionPrimary = theme === 'dark' ? mousePosition.y - 75 : mousePosition.y - 200;
+
+    const xPositionSecondary = theme === 'dark' ? mousePosition.x - 100 : mousePosition.x - 200;
+    const yPositionSecondary = theme === 'dark' ? mousePosition.y - 100 : mousePosition.y - 200;
 
     return (
         <>
-            <motion.div
-                className="pointer-events-none fixed z-0 hidden lg:block"
-                animate={{
-                    x: mousePosition.x - 150,
-                    y: mousePosition.y - 150,
-                }}
-                transition={{
-                    type: 'spring',
-                    damping: 25,
-                    stiffness: 150,
-                }}
+            <div
+                className="pointer-events-none rounded-full fixed hidden lg:block"
                 style={{
-                    width: theme === 'dark' ? '300px' : '400px',
-                    height: theme === 'dark' ? '300px' : '400px',
+                    width: theme === 'dark' ? '150px' : '400px',
+                    height: theme === 'dark' ? '150px' : '400px',
                     background: primaryGradient,
-                    filter: theme === 'dark' ? 'blur(150px)' : 'blur(50px)',
-                    left: 0,
-                    top: 0,
-                    transform: 'translate(-50%, -50%)',
+                    filter: theme === 'dark' ? 'blur(100px)' : 'blur(200px)',
+                    left: `${xPositionPrimary}px`,
+                    top: `${yPositionPrimary}px`,
+                    transform: 'translateZ(0)',
+                    willChange: 'transform',
+                    position: 'fixed',
                 }}
             />
 
-            <motion.div
-                className="pointer-events-none fixed -z-10 hidden lg:block"
-                animate={{
-                    x: mousePosition.x - 150,
-                    y: mousePosition.y - 150,
-                }}
-                transition={{
-                    type: 'spring',
-                    damping: 35,
-                    stiffness: 120,
-                }}
+            <div
+                className="pointer-events-none rounded-full fixed hidden lg:block"
                 style={{
-                    width: theme === 'dark' ? '450px' : '550px',
-                    height: theme === 'dark' ? '450px' : '550px',
+                    width: theme === 'dark' ? '200px' : '400px',
+                    height: theme === 'dark' ? '200px' : '400px',
                     background: secondaryGradient,
-                    filter: theme === 'dark' ? 'blur(150px)' : 'blur(60px)',
-                    left: 0,
-                    top: 0,
-                    transform: 'translate(-50%, -50%)',
+                    filter: 'blur(100px)',
+                    left: `${xPositionSecondary}px`,
+                    top: `${yPositionSecondary}px`,
+                    transform: 'translateZ(0)',
+                    willChange: 'transform',
+                    position: 'fixed',
                 }}
             />
         </>

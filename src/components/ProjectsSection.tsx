@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ArrowDown, ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -91,14 +91,19 @@ const ProjectsSection = () => {
         >
             <div id="projects-scroll" style={{ position: 'absolute', top: '55vh' }} />
             <div className="scroll-heading-fixed px-6 md:px-16">
-                <h2 className="mb-8 text-center">
+                <h2 className="mb-4 text-center">
                     <span className="text-gradient">Proyectos</span>
                 </h2>
-                <p className="text-center opacity-70 max-w-2xl mx-auto">Proyectos reales que combinan tecnología, diseño y propósito</p>
+                <p className="text-center opacity-70 max-w-2xl mx-auto mb-8">Proyectos reales que combinan tecnología, diseño y propósito</p>
+
+                <div className="flex justify-end items-center mt-15 mb-8 text-muted-foreground opacity-50 animate-bounce">
+                    <p className="text-sm pr-2">Desliza hacia abajo</p>
+                    <ArrowDown className="w-6 h-6" />
+                </div>
             </div>
 
             {/* Scroll trigger divs */}
-            <div className="card-scroll-triggers">
+            <div className="card-scroll-triggers pb-16">
                 {projects.map((_, i) => (
                     <div key={i} className="scroll-trigger" style={{ viewTimeline: `--trigger-${i}` } as CSSPropertiesWithVars} aria-hidden="true" />
                 ))}

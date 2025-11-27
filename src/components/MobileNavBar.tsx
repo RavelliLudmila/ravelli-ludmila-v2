@@ -117,7 +117,7 @@ const MobileNavBar = () => {
                                         </span>
                                     </motion.button>
                                 ))}
-                                <ThemeToggle animationIndex={navItems.length} />
+                            <ThemeToggle animationIndex={navItems.length} />
                             </div>
 
                             <motion.div
