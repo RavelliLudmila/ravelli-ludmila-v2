@@ -8,6 +8,7 @@ type ExperienceEntry = {
     institution: string;
     description: string;
     stack: string[];
+    date?: string;
 };
 
 interface ExperienceCardProps {
@@ -30,7 +31,10 @@ const ExperienceCard = ({ experience, onClose, modal }: ExperienceCardProps) => 
             )}
 
             <CardHeader>
-                <div className="text-sm text-muted-foreground mb-2">{experience.category}</div>
+                <div className="mb-2 flex justify-between">
+                    <div className="text-sm text-muted-foreground">{experience.category}</div>
+                    {experience.date && <div className="text-sm text-muted-foreground">{experience.date}</div>}
+                </div>
                 <CardTitle className="text-2xl">{experience.title}</CardTitle>
                 <p className="text-lg font-medium text-muted-foreground">{experience.institution}</p>
             </CardHeader>

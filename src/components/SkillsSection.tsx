@@ -23,7 +23,7 @@ const SkillsSection = () => {
                 <h2 className="my-8 text-center">
                     <span className="text-gradient-secondary">Stack técnico</span>
                 </h2>
-                <p className="text-center my-8 opacity-70 max-w-2xl mx-auto">Tecnologías y herramientas que domino para crear experiencias web</p>
+                <p className="text-center my-8 opacity-70 max-w-2xl mx-12 md:mx-auto">Tecnologías y herramientas que domino para crear experiencias web</p>
                 <div className="relative overflow-hidden py-8">
                     <div className="flex animate-infinite-scroll-fast-left sm:animate-infinite-scroll-slow-left hover:[animation-play-state:paused]">
                         {[...technicalSkills, ...technicalSkills, ...technicalSkills, ...technicalSkills].map((skill, i) => (

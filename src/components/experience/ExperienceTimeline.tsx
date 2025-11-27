@@ -7,6 +7,7 @@ type ExperienceEntry = {
     institution: string;
     description: string;
     stack: string[];
+    date?: string;
 };
 
 const experiences: ExperienceEntry[] = [
@@ -14,10 +15,11 @@ const experiences: ExperienceEntry[] = [
         id: 'frontend',
         category: 'Experiencia profesional',
         title: 'Frontend Developer && UX/UI Designer',
-        institution: 'EcoRed - Henry Projects',
+        institution: 'EcoRed – Henry Projects',
         description:
             'Desarrollo del frontend completo con Next.js 15, React 19 y TypeScript. Diseño de flujos de navegación, wireframes y componentes reutilizables.',
         stack: ['Next.js', 'Tailwind CSS', 'Figma', 'Framer Motion'],
+        date: 'oct. 2025 – act.',
     },
     {
         id: 'teaching',
@@ -27,6 +29,7 @@ const experiences: ExperienceEntry[] = [
         description:
             'Acompañamiento a estudiantes en el aprendizaje de tecnologías frontend y backend. Soporte técnico, liderazgo de sesiones de pair programming y revisión de proyectos.',
         stack: ['Code Review', 'Mentoría Técnica', 'Pair Programming', 'Comunicación Efectiva'],
+        date: 'jul. - oct. 2025',
     },
     {
         id: 'fullstack',
@@ -35,14 +38,16 @@ const experiences: ExperienceEntry[] = [
         institution: 'SoyHenry Bootcamp',
         description: 'Entrenamiento intensivo en React, Next.js, Node.js, Express, PostgreSQL, Tailwind CSS, TypeScript y metodologías ágiles.',
         stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Git & GitHub'],
+        date: 'abr. – sep. 2025',
     },
     {
         id: 'degree',
         category: 'Experiencia academica',
         title: 'Tecnicatura Universitaria en Tecnologías de la Información',
-        institution: 'Universidad Tecnológica Nacional - FRSF',
+        institution: 'Universidad Tecnológica Nacional – FRSF',
         description: 'Fundamentos de programación, arquitectura de computadoras, bases de datos, análisis de sistemas y gestión agil de proyectos.',
         stack: ['Java', 'MySQL', 'UML', 'Arquitectura de Computadoras'],
+        date: 'ago. 2023 – act.',
     },
 ];
 

@@ -200,6 +200,22 @@
         color: hsl(var(--foreground));
     }
 
+    .hero-shell {
+        animation: fade-in 0.7s ease both;
+    }
+
+    .hero-title {
+        transition: transform 0.18s ease-out;
+        will-change: transform;
+    }
+
+    .hero-subtitle {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
     @keyframes fade-in {
         from {
             opacity: 0;
@@ -291,6 +307,22 @@
 
     .animate-infinite-scroll-slow-right {
         animation: infinite-scroll-right 150s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        .hero-title {
+            transform: none !important;
+        }
     }
 }
 

@@ -131,7 +131,7 @@ const HeroSection = () => {
                         transition={{ delay: 0.6, duration: 0.6 }}
                         className="max-w-2xl mx-auto space-y-4"
                     >
-                        <p className="opacity-70 leading-relaxed">Santa Fe, Argentina · Disponibilidad inmediata para relocalización</p>
+                        <p className="opacity-70 leading-relaxed">Santa Fe Capital, Argentina</p>
                     </motion.div>
 
                     <motion.div
@@ -147,7 +147,11 @@ const HeroSection = () => {
                             Contactar
                         </button>
                         <button
-                            onClick={() => document.getElementById('projects-scroll')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() =>
+                                window.innerWidth < 768
+                                    ? document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                                    : document.getElementById('projects-scroll')?.scrollIntoView({ behavior: 'smooth' })
+                            }
                             className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:brightness-125 dark:hover:brightness-110 transition-all duration-500"
                         >
                             Ver proyectos
