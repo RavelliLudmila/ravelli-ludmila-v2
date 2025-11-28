@@ -7,6 +7,7 @@ import SkillsSection from '@/components/SkillsSection';
 import ExperienceSection from '@/components/ExperienceSection';
 import SectionWheelNavigator from '@/components/SectionWheelNavigator';
 import { ContactProvider } from '@/context/ContactContext';
+import Notification from '@/components/contact/Notification';
 
 const AboutSection = dynamic(() => import('@/components/AboutSection'));
 const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'));
@@ -29,6 +30,7 @@ export default function Home() {
             <SectionWheelNavigator sections={SECTIONS} />
             <main>
                 <NavBar />
+                <Notification />
                 <CursorGlow />
                 <MobileNavBar />
                 <HeroSection />

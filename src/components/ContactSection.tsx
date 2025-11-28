@@ -121,14 +121,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-end justify-center mx-4 md:justify-end md:pr-4 pb-10 pointer-events-none">
+        <div className="fixed inset-0 z-50 flex items-end justify-center mx-4 mb-0 md:justify-end pointer-events-none">
             <Card
-                className="pointer-events-auto w-full max-w-md min-h-[500px] py-0 gap-0"
+                className="pointer-events-auto w-full max-w-md min-h-[500px] py-0 gap-0 rounded-t-xl rounded-b-none"
                 style={{
                     boxShadow: '0 0 40px hsl(var(--primary) / 0.15), 0 20px 60px hsl(var(--muted) / 0.3)',
                 }}
             >
-                <div className="flex items-center justify-between px-4 py-4 mb-0 border-b border-border gradient-bg">
+                <div className="flex items-center justify-between px-4 py-4 mb-0 border-b border-border gradient-bg rounded-t-xl">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary to-primary flex items-center text-white justify-center font-semibold text-sm">
                             LR
@@ -163,7 +163,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
                     ))}
                 </div>
 
-                <div className="px-4 py-3 border-t border-border rounded-b-xl flex items-center gap-2 bg-secondary/10">
+                <div className="px-4 py-3 border-t border-border flex items-center gap-2 bg-secondary/10">
                     <div className="flex items-center gap-2 flex-1">
                         <Input type="text" placeholder={'Escribe un mensaje'} disabled={true} className="flex-1 text-sm bg-white/80 dark:bg-white/10 border border-border opacity-75" />
                     </div>

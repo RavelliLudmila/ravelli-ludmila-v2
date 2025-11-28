@@ -23,7 +23,7 @@ const sections: NavSection[] = [
 const NavBar = () => {
     const [activeSection, setActiveSection] = useState('hero');
     const [hoveredDot, setHoveredDot] = useState<string | null>(null);
-    const { open } = useContact();
+    const { open, isOpen } = useContact();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -72,7 +72,7 @@ const NavBar = () => {
                             onMouseLeave={() => setHoveredDot(null)}
                             className={cn(
                                 'relative w-3 h-3 rounded-full transition-all duration-300',
-                                activeSection === section.scrollTarget || activeSection === section.id
+                                activeSection === section.scrollTarget || activeSection === section.id || (section.id === 'contact' && isOpen)
                                     ? 'bg-gradient-to-r from-primary to-secondary'
                                     : 'bg-muted-foreground/30',
                                 hoveredDot === section.id && 'scale-125'
