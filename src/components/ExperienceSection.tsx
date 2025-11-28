@@ -14,10 +14,10 @@ const ExperienceSection = () => {
                     <p className="mb-6 text-center opacity-70 max-w-2xl mx-auto">Mi trayectoria profesional y academica en tecnologia y diseño.</p>
                 </div>
 
-                <div className='hidden md:block'>
+                <div className='hidden xl:block'>
                     <ExperienceTimelineMd />
                 </div>
-                <div className='block md:hidden'>
+                <div className='block xl:hidden'>
                     <ExperienceTimeline />
                 </div>
             </div>

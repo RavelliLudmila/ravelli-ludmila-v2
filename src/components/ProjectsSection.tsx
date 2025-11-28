@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import ProjectsCarousel from './projects/ProjectsCarousel';
 import ProjectsSlides from './projects/ProjectsSlides';
 
@@ -63,11 +66,25 @@ export const projects: Project[] = [
 ];
 
 const ProjectsSection = () => {
+    const [canUseSlides, setCanUseSlides] = useState(true);
+
+    useEffect(() => {
+        const supportsTimeline = typeof CSS !== 'undefined' && CSS.supports?.('animation-timeline: view()');
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setCanUseSlides(Boolean(supportsTimeline));
+    }, []);
+
     return (
         <section id="projects">
-            <div className="hidden sm:block">
-                <ProjectsSlides />
-            </div>
+            {canUseSlides ? (
+                <div className="hidden sm:block">
+                    <ProjectsSlides />
+                </div>
+            ) : (
+                <div className="hidden sm:block" id="projects-scroll">
+                    <ProjectsCarousel />
+                </div>
+            )}
             <div className="block sm:hidden">
                 <ProjectsCarousel />
             </div>
