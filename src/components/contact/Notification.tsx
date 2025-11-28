@@ -8,7 +8,7 @@ const Notification = () => {
     const { open } = useContact();
 
     return (
-        <div className="hidden md:block fixed bottom-0 right-4 z-50">
+        <div className="hidden sm:block fixed bottom-0 right-4 z-50">
             <Button
                 type="button"
                 className="flex items-center bg-secondary text-white justify-between rounded-t-xl rounded-b-none h-10 w-[275px]"
