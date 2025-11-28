@@ -98,10 +98,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
     const handleContactAction = (action: string) => {
         switch (action) {
             case 'email':
-                window.open(
-                    'https://mail.google.com/mail/u/0/?to=lud.ravelli@gmail.com&su=Oportunidad+Laboral&body=Hola+Ludmila,%0A%0AHe+visto+tu+portfolio+y+me+interesa+conocer+m%C3%A1s+sobre+tu+experiencia+como+Frontend+Developer.%0A%0A%5BEscribe+tu+mensaje+aqu%C3%AD%5D%0A%0ASaludos,+%5BTu+Nombre%5D.&fs=1&tf=cm',
-                    '_blank'
-                );
+                if (window.innerWidth < 768) {
+                    window.open('mailto:lud.ravelli@gmail.com');
+                } else {
+                    window.open(
+                        'https://mail.google.com/mail/u/0/?to=lud.ravelli@gmail.com&su=Oportunidad+Laboral&body=Hola+Ludmila,%0A%0AHe+visto+tu+portfolio+y+me+interesa+conocer+m%C3%A1s+sobre+tu+experiencia+como+Frontend+Developer.%0A%0A%5BEscribe+tu+mensaje+aqu%C3%AD%5D%0A%0ASaludos,+%5BTu+Nombre%5D.&fs=1&tf=cm',
+                        '_blank'
+                    );
+                }
                 break;
             case 'github':
                 window.open('https://github.com/RavelliLudmila', '_blank');
@@ -165,7 +169,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
 
                 <div className="px-4 py-3 border-t border-border flex items-center gap-2 bg-secondary/10">
                     <div className="flex items-center gap-2 flex-1">
-                        <Input type="text" placeholder={'Escribe un mensaje'} disabled={true} className="flex-1 text-sm bg-white/80 dark:bg-white/10 border border-border opacity-75" />
+                        <Input
+                            type="text"
+                            placeholder={'Escribe un mensaje'}
+                            disabled={true}
+                            className="flex-1 text-sm bg-white/80 dark:bg-white/10 border border-border opacity-75"
+                        />
                     </div>
                     <Button size="icon" aria-label="Enviar mensaje" className="shrink-0" disabled={true}>
                         <Send className="w-4 h-4" />
