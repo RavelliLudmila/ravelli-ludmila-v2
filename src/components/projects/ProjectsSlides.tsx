@@ -21,12 +21,16 @@ const ProjectsSlides = () => {
             className="selected-work gradient-bg"
             style={
                 {
-                    '--count': 7,
+                    '--count': 8,
                     timelineScope: timelineScopes,
                 } as CSSPropertiesWithVars
             }
         >
-            <div id="projects-scroll" style={{ position: 'absolute', top: '55vh' }} />
+            <div id="projects-scroll" style={{ position: 'absolute', top: '40vh' }} />
+            <div id="project-0" style={{ position: 'absolute', top: '40vh' }} />
+            <div id="project-1" style={{ position: 'absolute', top: '140vh' }} />
+            <div id="project-2" style={{ position: 'absolute', top: '240vh' }} />
+            <div id="project-3" style={{ position: 'absolute', top: '340vh' }} />
             <div className="scroll-heading-fixed px-16">
                 <h2 className="mb-4 text-center">
                     <span className="text-gradient">Proyectos</span>
