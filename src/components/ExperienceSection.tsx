@@ -5,7 +5,7 @@ import ExperienceTimeline from './experience/ExperienceTimeline';
 
 const ExperienceSection = () => {
     return (
-        <section id="experience" className="min-h-screen py-14 px-6 md:pl-16 flex items-center gradient-bg">
+        <section id="experience" className="min-h-screen py-14 md:py-0 px-6 md:pl-16 flex items-center gradient-bg">
             <div className="w-full">
                 <div className="text-center">
                     <h2 className="mb-6 text-center">
