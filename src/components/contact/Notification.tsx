@@ -15,7 +15,7 @@ const Notification = () => {
                 onClick={open}
                 aria-label="Abrir contacto"
             >
-                <p className="text-base font-medium ml-2">Work Together?</p>
+                <p className="text-base font-medium ml-2">¿Trabajamos juntos?</p>
                 <Send className="size-5 mr-2" />
             </Button>
         </div>

@@ -138,7 +138,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ isOpen, onClose }) => {
                             LR
                         </div>
                         <div className="text-left">
-                            <p className="font-semibold text-foreground text-sm">Work Together?</p>
+                            <p className="font-semibold text-foreground text-sm">¿Trabajamos juntos?</p>
                             <p className="text-xs text-muted-foreground">lud.ravelli@gmail.com</p>
                         </div>
                     </div>
